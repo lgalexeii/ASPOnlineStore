@@ -18,7 +18,7 @@ namespace ASPCart.Controllers
         public ActionResult Index()
         {
             var productos = db.Productos.Include(p => p.Categoria);
-            return View(productos.ToList());
+            return View(productos.ToList() ) ;
         }
 
         // GET: Productos/Details/5
