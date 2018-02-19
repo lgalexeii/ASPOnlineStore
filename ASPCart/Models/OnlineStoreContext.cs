@@ -16,5 +16,6 @@ namespace ASPCart.Models
         public DbSet<Compra> Compras { get; set; }
         public DbSet<Producto> Productos { get; set; }
         public DbSet<Cupon> Cupones { get; set; }
+        public DbSet<Carrito> Carrito { get; set; }
     }
 }

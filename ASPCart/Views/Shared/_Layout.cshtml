@@ -1,4 +1,13 @@
-﻿<!DOCTYPE html>
+﻿@{ ASPCart.Models.Carrito carrito = (ASPCart.Models.Carrito)HttpContext.Current.Session["carrito"];
+    int totalProductos = 0;
+    double total = 0.0;
+    if (carrito != null)
+    {
+        totalProductos = carrito.Productos.Count;
+	total = carrito.Total;
+    }
+   }
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -7,9 +16,11 @@
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Scripts/OLFunctions.js"></script>
+
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-fixed-top nav-tabs-justified">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -17,15 +28,33 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("Ver Todos", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                @Html.ActionLink("Carrito", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Online Store", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    <li>
+                        @Html.ActionLink("Ver Todos", "Index", "Productos", new { area = "" }, new { @class = "navbar-item" })
+                    </li>
+                    <li>
+                        @Html.ActionLink("Carrito", "Details", "carrito", new { area = "" }, new { @class = "navbar-item" })
+                    </li>
                 </ul>
+                <div class="my-1 my-lg-0 pull-right text-muted">
+                    <table style="width:100%;">
+                        <caption><b>Cart</b></caption>
+                        <tr>
+                            <td class="col-md-8">Total Items</td>
+                            <td class="col-md-4" id="cartTotalItems">@totalProductos</td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-8">Total</td>
+                            <td class="col-md-4">$ <span id="cartTotal">@total </span></td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
+
     </div>
 
     <div class="container body-content">
@@ -36,7 +65,8 @@
         </footer>
     </div>
 
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery-3.0.0.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
+
 </body>
 </html>

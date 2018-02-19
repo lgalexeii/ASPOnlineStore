@@ -128,5 +128,18 @@ namespace ASPCart.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public FileContentResult GetImage(int id)
+        {
+            Producto producto = db.Productos.Find(id);
+            if (producto != null)
+            {
+                return File(producto.ImageFile,"image/jpeg");
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }

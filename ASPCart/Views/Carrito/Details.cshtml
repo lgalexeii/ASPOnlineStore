@@ -1,0 +1,51 @@
+﻿@model ASPCart.Models.Carrito
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Carrito</h4>
+
+    <table class="table-striped">
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Descripcion</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var prod in Model.Productos)
+            {
+            <tr>
+                <td class="col-md-3">@prod.Producto.Nombre</td>
+                <td class="col-md-5">@prod.Producto.Descripcion</td>
+                <td class="col-md-2">@prod.Cantidad</td>
+                <td class="col-md-2">@prod.Producto.Precio</td>
+            </tr> 
+            }
+        </tbody>
+    </table>
+
+   
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total)
+        </dd>        
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Comprar mas", "Index","Productos") |
+    @Html.ActionLink("Comprar", "comprar")
+</p>

@@ -4,9 +4,11 @@ using System.Linq;
 using System.Web;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
 
 namespace ASPCart.Models
 {
+    [DataContract(IsReference = true)]
     public class Producto
     {
         public int Id { get; set; }

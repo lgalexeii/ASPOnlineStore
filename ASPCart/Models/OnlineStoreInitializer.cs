@@ -29,8 +29,8 @@ namespace ASPCart.Models
                 new Producto
                 {
                     Nombre = "Mini Hunter",
-                    Descripcion ="Super cute",
-                    Precio = 899.99,
+                    Descripcion ="Super cute, ready for haunt all mice at your home",
+                    Precio = 34.99,
                     ImageFile = getFileBytes("\\Images\\kitten1.jpg"),
                     FechaAlta = DateTime.Now,
                      Existencias = 2,
@@ -38,17 +38,37 @@ namespace ASPCart.Models
                 },
                 new Producto
                 {
-                    Nombre = "Short Leg",
-                    Descripcion ="Awsome and super nice",
-                    Precio = 899.99,
+                    Nombre = "Short Legged",
+                    Descripcion ="Awesome and super nice, his tenderness is inversely propor to his shortness... ",
+                    Precio = 33.50,
                     ImageFile = getFileBytes("\\Images\\kitten2.jpg"),
                     FechaAlta = DateTime.Now,
-                     Existencias = 2,
+                     Existencias = 3,
+                     CategoriaId = 1
+                },
+                new Producto
+                {
+                    Nombre = "Big cat",
+                    Descripcion ="Enough as your necessities of love",
+                    Precio = 99.99,
+                    ImageFile = getFileBytes("\\Images\\kitten3.jpg"),
+                    FechaAlta = DateTime.Now,
+                     Existencias = 1,
                      CategoriaId = 1
                 }
             };
 
             productos.ForEach(s => context.Productos.Add(s));
+            context.SaveChanges();
+
+            Cupon cupon = new Cupon
+            {
+                Codigo = "NN50",
+                Descuento = 0.5f,
+                Valido = true
+            };
+
+            context.Cupones.Add(cupon);
             context.SaveChanges();
         }
 

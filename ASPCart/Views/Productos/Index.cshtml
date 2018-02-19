@@ -12,9 +12,6 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Categoria.Nombre)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Nombre)
         </th>
         <th>
@@ -38,9 +35,6 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Categoria.Nombre)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Nombre)
         </td>
         <td>
@@ -50,8 +44,7 @@
             @Html.DisplayFor(modelItem => item.Precio)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ImageFile)
-            <img src=""
+            <img width="250" src="@Url.Action("GetImage", "Productos", new { id = item.Id })" />
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.FechaAlta)
@@ -60,9 +53,8 @@
             @Html.DisplayFor(modelItem => item.Existencias)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            <a href="#" onclick="addToCart(@item.Id)">Add to Cart</a>
         </td>
     </tr>
 }

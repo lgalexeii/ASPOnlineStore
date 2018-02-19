@@ -47,7 +47,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ImageFile)
+            <img width="250" src="@Url.Action("GetImage", "Productos", new { id = Model.Id })" />
         </dd>
 
         <dt>
@@ -70,5 +70,6 @@
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index","productos") |
+    <a href="#" onclick="addToCart(@Model.Id)">Add to Cart</a>
 </p>
